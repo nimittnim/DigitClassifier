@@ -1,0 +1,234 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digits Classifier</title>
+    <style>
+        #tit {
+            align-items: center;
+            background-color: rgb(175, 198, 218);
+            font-size: larger;
+            justify-content: center;
+        }
+        #board {
+            width:180px;
+
+            display: grid;
+            grid-template-columns: repeat(8, 20px);
+            margin: 2px auto;
+            justify-content: center;
+            align-items: center;
+            gap: 2px;
+            border: 2px solid #141515;
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            background-color: rgb(175, 198, 218);
+        }
+        .button{
+            height: 30px;
+            width:30px;
+            border: 2px solid black;
+            border-radius: 10%;
+        }
+        .button img{
+            width :100%;
+            height: 100%;
+            margin-bottom: 10px; 
+        }
+        #result {
+            width: 180px;
+            height: 27px;
+            font-size:x-large;
+            border: 2px solid black;
+            border-radius :3%;
+            text-align: center; /* Center text horizontally */
+            display: flex;
+            align-items: center; /* Center text vertically */
+            justify-content: center; /* Center text horizontally */
+        } 
+        #buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        #panel{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="tit">
+        <h1>A simple Digits Classifier</h1>
+    </div>
+    <br><br>
+    <div id="board">
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div><div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+        <div class="cell" onmousedown="startDrawing(this)" onmouseover="draw(this)"></div>
+    </div>
+    <div id="panel">
+        <div id="result">{{result}}</div>
+        <div id="buttons">
+            <div class="button" onmousedown="reset()">
+                <img src="{% static 'reset.png' %}" alt="Reset Image">
+            </div>
+            <div class="button" onmousedown="update_server_2()">
+                <img src="{% static 'search.png' %}" alt="Reset Image">
+            </div>   
+        </div>
+    </div>
+    <!-- <input type="number" name="digit" placeholder="Digit">
+    <button onclick = "update_server()" type = 'submit'>Input
+    </button> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        /////////////////////////////////
+        let n = 64;
+        let image_data = new Array(64);
+        let isDrawing = false;
+        declare_image_data(image_data);
+        function declare_image_data(){
+            for (let i = 0; i < n; i++){
+                image_data[i] = 0;
+            }
+        }        
+        /////////////////////////////
+        function update_server() {
+            event.preventDefault(); 
+            var image_data_json = JSON.stringify(image_data);
+            var digitInput = document.getElementsByName("digit")[0];
+            var digit = digitInput.value;
+            $.ajax({
+                type: 'GET',
+                url: '',
+                data: {'image_data': image_data_json, 'Digit': digit},
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error("Status: " + status);
+                    console.error("Error: " + error);
+                }
+            });
+        }
+
+        function update_server_2() {
+            event.preventDefault(); 
+            var image_data_json = JSON.stringify(image_data);
+            $.ajax({
+                type: 'GET',
+                url: 'result/',
+                data: {'image_data': image_data_json},
+                success: function(response) {
+                    console.log(response);
+                    $('#result').html(response.result);
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                    console.error("Status: " + status);
+                    console.error("Error: " + error);
+                }
+            });
+        }
+
+        /////////////////////////////////
+        function startDrawing(element) {
+            isDrawing = true;
+            element.style.backgroundColor = 'rgb(0, 0, 0)';
+            const index = Array.from(element.parentElement.children).indexOf(element);
+            image_data[index] = 1;
+        }
+        function draw(element) {
+            if (isDrawing) {
+                element.style.backgroundColor = 'rgb(0, 0, 0)';
+                const index = Array.from(element.parentElement.children).indexOf(element);
+                image_data[index] = 1;
+            }
+        }
+        window.addEventListener('mouseup', function() {
+            isDrawing = false;
+        });
+        function reset() {
+        const cells = document.getElementsByClassName("cell");
+        for (let i = 0; i < cells.length; i++) {
+            cells[i].style.backgroundColor = 'rgb(175, 198, 218)';
+            image_data[i] = 0;  
+        }
+        const result = document.getElementById("result");
+        result.innerHTML = 'Draw n Check '
+        //////////////////////////////////////////
+}
+    </script>
+</body>
+</html>
